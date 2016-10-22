@@ -1,12 +1,33 @@
-- @post.each do |post|
-    = link_to (image_tag post.image.url(:small)), post
-    %h2= link_to post.title, post
-    %p
-        = post.comments.count
-        Comments
-    %p
-        = post.get_likes.size
-        Likes
-    
-    
-= link_to "Add New Project", new_post_path
+- if user_signed_in?
+    %p#intro
+        = current_user.name
+        أهلاً
+        %br/
+        %span
+            شارك مشروعك وتابع مشاريع الأخرين 
+- else
+    %p#intro
+        ماهو مشروعك؟
+        %br/
+        %span
+            شارك مشروعك وتابع مشاريع الأخرين 
+
+#posts
+    - @posts.each do |post|
+        .post
+            .post_image
+                = link_to (image_tag post.image.url(:small)), post
+            .post_content
+                .title
+                    %h2= link_to post.title, post
+                .data.clearfix
+                    %p.username
+                        = post.user.name
+                        بواسطة
+                    %p.buttons
+                        %span
+                            %i.fa.fa-comments-o
+                            = post.comments.count
+                        %span
+                            %i.fa.fa-thumbs-o-up
+                            = post.get_likes.size
