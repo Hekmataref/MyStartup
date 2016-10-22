@@ -1,7 +1,7 @@
 !!!
 %html
 %head
-  %title Startup
+  %title Startup كل شيء
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   %link{:rel => "stylesheet", :href => "http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css"}
@@ -10,7 +10,7 @@
 %body
   %header
     .wrapper.clearfix
-      #logo= link_to "Startup", root_path
+      #logo= link_to "Startup كل شيء", root_path
       %nav
         - if user_signed_in?
           = link_to current_user.name, edit_user_registration_path
