@@ -4,5 +4,9 @@
     %p
         = post.comments.count
         Comments
+    %p
+        = post.get_likes.size
+        Likes
+    
     
 = link_to "Add New Project", new_post_path
