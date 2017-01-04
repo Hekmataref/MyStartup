@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <title>مشروعي | كل جديد في الريادة</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application',  'posts.coffee', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
+  <link rel= "stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Cairo|El+Messiri" rel="stylesheet">
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/x-icon" href="https://lh3.googleusercontent.com/pQslXnsEXH4N6m5NFg5TIZUGYgAdtXtUJvtGr8DhSsv0MqAxnQ5LQ3yYvroh1ofIG8Qln8swCMc8kmZJeXp4Hw1f60v4nlE8zeo=w1920-h1080-rw-no" />
+  <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+</head>
+<body style="font-family: 'Cairo', sans-serif;">
+
+    <%= render 'shared/navigation' %>
+
+  
+  <div id="main-container" class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <% flash.each do |name, msg| -%>
+            <%= content_tag :div, msg, class: "alert alert-#{name}" %>
+          <% end -%>
+        </div>
+      </div>
+    </div>
+  
+  <div class="container">
+    <%= yield %>
+    </div>
+    
+
+
+  <%= render 'posts/footer' %>
+    
+</body>
+</html>

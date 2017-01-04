@@ -25,6 +25,11 @@ gem 'simple_form', '~> 3.3', '>= 3.3.1'
 gem 'devise', '~> 4.2'
 gem 'paperclip', '~> 5.1'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'rails-i18n', '~> 4.0', '>= 4.0.8'
+gem 'css_convertor', '~> 1.0', '>= 1.0.3'
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'autoprefixer-rails'
+gem 'masonry-rails', '~> 0.2.4'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 

@@ -1,9 +1,13 @@
 class PostsController < ApplicationController
     before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote]
-    before_action :authenticate_user!, except: [:index, :show]
+    before_action :authenticate_user!, except: [:index, :show, :most_liked]
     
     def index
         @posts = Post.all.order("created_at DESC")
+    end
+    
+    def most_liked
+        @most_liked = Post.all.order(cached_votes_score: :DESC)
     end
     
     def show
@@ -18,10 +22,17 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.build(post_params)
         
-        if @post.save
-            redirect_to @post
-        else
-            render 'new'
+        
+        respond_to do |format|
+            if @post.save
+              flash[:success] = 'تمت إضافة المشروع بنجاح.'
+              format.html { redirect_to @post }
+              format.json { render :show, status: :created, location: @post }
+            else
+              flash[:danger] = 'هناك مشكلة عند إضافة المشروع.'
+              format.html { render :new }
+              format.json { render json: @post.errors, status: :unprocessable_entity }
+            end
         end
     end
     
@@ -29,10 +40,16 @@ class PostsController < ApplicationController
     end
     
     def update
-        if @post.update(post_params)
-            redirect_to @post
-        else
-            render 'edit'
+        respond_to do |format|
+            if @post.update(post_params)
+              flash[:success] = 'تم تحديث المشروع بنجاح.'
+              format.html { redirect_to @post }
+              format.json { render :show, status: :ok, location: @post }
+            else
+              flash[:danger] = 'هناك مشكلة استكمال المشروع.'
+              format.html { render :edit }
+              format.json { render json: @post.errors, status: :unprocessable_entity }
+            end
         end
     end
     

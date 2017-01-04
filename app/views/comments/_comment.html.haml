@@ -1,0 +1,6 @@
+.comment
+    %p= comment.comment
+    %p= comment.user.name
+    = button_to 'Delete', [comment.post, comment],
+               :method => :delete,
+               data: { confirm: 'Are you sure?' }

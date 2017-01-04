@@ -1,0 +1,22 @@
+
+= link_to current_user.name, edit_user_registration_path
+
+#posts
+    - @user_posts.each do |post|
+        .post
+            .post_image
+                = link_to (image_tag post.image.url(:small)), post
+            .post_content
+                .title
+                    %h2= link_to post.title, post
+                .data.clearfix
+                    %p.username
+                        بواسطة
+                        = post.user.name
+                    %p.buttons
+                        %span
+                            %i.fa.fa-comments-o
+                            = post.get_likes.size
+                        %span
+                            %i.fa.fa-check
+                            = post.comments.count 

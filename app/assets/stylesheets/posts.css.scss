@@ -1,13 +1,16 @@
 #post_show {
 	padding-top: 2rem;
 	.post_image_description {
-		width: 50%;
-		float: left;
-		margin-right: 5%;
+		width: 40%;
+		float: right;
+		margin-left: 5%;
+		p {
+			font-size: 3rem;
+		}
 	}
 	.post_data {
 		width: 15%;
-		float: left;
+		float: right;
 		.button {
 			width: 100%;
 			display: inline-block;
@@ -29,13 +32,18 @@
 			text-decoration: none;
 			color: #969696;
 			margin: 0;
+			font-size: 1.7rem;
+    		text-align: center;
+    		&:hover {
+    			color:#7577E4;
+    		}
 		}
 	}
 	#random_post {
 		width: 25%;
-		margin-left: 5%;
+		margin-right: 5%;
 		margin-top: -3.2rem;
-		float: left;
+		float: right;
 		h3 {
 			font-size: 1rem;
 		}
@@ -74,12 +82,12 @@
 						font-size: .8rem;
 					}
 					.username {
-						float: left;
+						float: right;
 					}
 					.buttons {
-						float: right;
+						float: left;
 						span {
-							margin-left: .5rem;
+							margin-right: .5rem;
 						}
 					}
 				}
@@ -89,6 +97,7 @@
 	h1 {
 		margin: 0;
 		color: #333233;
+		font-size: 40px;
 	}
 	img {
 		width: 100%;
@@ -96,7 +105,8 @@
 	}
 	.username {
 		color: #969696;
-		margin: 0 0 1.5rem 0;
+	    margin: 1rem 0 1.5rem 0;
+    	font-size: 1.8rem;
 	}
 	.description {
 		margin: 2rem 0;
@@ -107,7 +117,7 @@
 }
 
 #comments {
-	padding-bottom: 4rem;
+	padding-bottom: 6rem;
 	width: 50%;
 	.comment_count {
 		border-bottom: 1px solid #E9E9E9;
@@ -127,6 +137,11 @@
 			margin: 0;
 			color: #969696;
 		}
+		
+		.btn {
+			float: left;
+			margin: -6.99%;
+		}
 	}
 	.comment_content {
 		margin-top: 2.5rem;
@@ -137,6 +152,169 @@
 			border: 1px solid #E4E4E4;
 			background: #F8F9FA;
 			border-radius: 0.3rem;
+		}
+	}
+}
+
+@media only screen and (max-width: 790px) {
+	.navbar-nav > li {
+    	float: none
+	}
+	#post_show {
+		padding-top: 2rem;
+		.post_image_description {
+		    width: 100%;
+		    min-height: 300px;
+		    margin: 0 0 30px 0;
+		    padding: 20px;
+		    background: #fff;
+		    border-radius: 2.9rem 2.9rem 2.9rem 2.9rem;
+		    box-shadow: 0 1px 2px #444;
+		}
+		.post_data {
+			width: 100%;
+			text-align: center;
+			font-size: 2rem;
+			padding-bottom: 60px;
+			.button {
+				width: 100%;
+				display: inline-block;
+				padding: .75rem 0;
+				margin-bottom: 1rem;
+				text-align: center;
+				text-decoration: none;
+				color: #969696;
+				&:hover {
+					color: #50A7C7;
+					border: 1px solid #50A7C7;
+				}
+			}
+			.data {
+				width: 100%;
+				display: block;
+				padding: .75rem 0;
+				border-bottom: 1px solid #E9E9E9;
+				text-decoration: none;
+				color: #969696;
+				margin: 0;
+			}
+		}
+		#random_post {
+			width: 60%;
+			margin-right: 5%;
+			margin-top: -3.2rem;
+			float:left;
+			display:none;
+			h3 {
+				font-size: 2rem;
+			}
+			.post {
+				background: #F8F9FA;
+				border: 1px solid #E4E4E4;
+				border-radius: 0.3rem;
+				.post_image {
+					height: 200px;
+					overflow: hidden;
+					img {
+						width: 100%;
+						border-radius: .3rem .3rem 0 0;
+					}
+				}
+				.post_content {
+					h2 {
+						margin: 0;
+						font-weight: 100;
+						padding: 1rem 5%;
+						border-bottom: 1px solid #E4E4E4;
+						font-size: 1.25rem;
+						a {
+							text-decoration: none;
+							color: #333233;
+							&:hover {
+								color: #50A7C7;
+							}
+						}
+					}
+					.data {
+						padding: .75rem 5%;
+						color: #969696;
+						.username, .buttons {
+							margin: 0;
+							font-size: .8rem;
+						}
+						.username {
+							float: right;
+						}
+						.buttons {
+							float: left;
+							span {
+								margin-right: .5rem;
+							}
+						}
+					}
+				}
+			}
+		}
+		h1 {
+			margin: 0;
+			color: #333233;
+			text-align:center;
+		}
+		img {
+			width: 100%;
+			border-radius: .3rem;
+			vertical-align: middle;
+		}
+		.username {
+			color: #969696;
+			margin: 0 0 1.5rem 0;
+		}
+		.description {
+			margin: 2rem 0;
+			font-size: 2.1rem;
+			line-height: 1.5;
+			color: #969696;
+		}
+	}
+	
+	#comments {
+		padding-bottom: 6rem;
+		width: 100%;
+		.comment_count {
+			border-bottom: 1px solid #E9E9E9;
+			padding-bottom: .5rem;
+			margin-bottom: 0;
+		}
+		.comment {
+			padding: 2rem 0;
+			border-bottom: 1px solid #E9E9E9;
+			padding-left: 5%;
+			.username {
+				font-size: 1.3rem;
+				color: #333233;
+				margin: 0 0 .5rem 0;
+			}
+			.content {
+				margin: 0;
+				color: #969696;
+			}
+			
+			.btn {
+			float: left;
+			margin: -6.99%;
+			}
+			
+		}
+		.comment_content {
+			margin-top: 2.5rem;
+			textarea {
+				width: 100%;
+				margin: 1rem 0;
+				min-height: 150px;
+				border: 1px solid #E4E4E4;
+				background: #F8F9FA;
+				border-radius: 0.3rem;
+			}
 		}
 	}
 }

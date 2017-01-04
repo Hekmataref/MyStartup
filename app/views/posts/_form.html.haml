@@ -1,7 +1,27 @@
-= simple_form_for @post do |f|
-    = f.input :image
-    = f.input :title
-    = f.input :link
-    = f.input :description
-    
-    = f.button :submit
+= simple_form_for @post, html: { multipart: true } do |f|
+	- if @post.errors.any?
+		#errors
+			%h2
+				= pluralize(@post.errors.count, "error")
+				prevented this Post from saving
+			%ul
+				- @post.errors.full_messages.each do |msg|
+					%li= msg
+
+	.form-group
+		= f.input :title,:label => "إسم المشروع", input_html: { class: 'form-control', :type => "text", :required => ""}
+		%small#titleHelp.form-text.text-muted نرجو التأكد من كتابة إسم المشروع بالعربي
+
+	.form-group
+		= f.input :image,:label => "صورة", input_html: { class: 'form-group',"aria-describedby" => "fileHelp", :required => "", :type => "file" }
+
+	.form-group
+		= f.input :link,:label => "رابط المشروع ", input_html: { class: 'form-control', :type => "url", :value => "https://", :required => "" }
+		
+
+	.form-group
+		= f.input :description,:label => "نبذة مختصرة عن المشروع", input_html: { class: 'form-control', :rows => "3", :required => "" }
+		%small#descriptionHelp.form-text.text-muted نرجو أن تكون النبذة دقيقة وواضحة
+		
+	
+	%button.btn.btn-info{:type => "submit" } أضف مشروع

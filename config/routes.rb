@@ -1,13 +1,22 @@
 Rails.application.routes.draw do
+  get 'users/show'
+  
+  get '/posts/most_liked'
+
   devise_for :users
   resources :posts do 
     member do
       get "like", to: "posts#upvote"
     end
-    resources :comments
+    resources :comments, only: [:create, :destroy]
+  end
+  resources :users
+  
+  scope "(:locale)", :locale => /en|ar/ do
+  resources :posts
+  root :to => "posts#index"
   end
   
-  root 'posts#index'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

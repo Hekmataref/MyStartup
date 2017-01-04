@@ -1,7 +1,8 @@
+
 #intro {
 	margin: 2.75rem 0 1.75rem 0;
 	text-align: center;
-	font-size: 1.75rem;
+	font-size: 3.5rem;
 	line-height: 1;
 	span {
 		font-size: 1.25rem;
@@ -10,14 +11,17 @@
 }
 #posts {
 	.post {
-		background: #F8F9FA;
+		background-image: url(https://subtlepatterns.com/patterns/geometry2.png);
+		
 		width: 30%;
-		float: left;
+		float: right;
 		margin: 1rem 1.5%;
 		border: 1px solid #E4E4E4;
-		border-radius: 0.3rem;
+		border-radius: 0.3rem 0.3rem 1.3rem 1.3rem;
 		.post_image {
-			height: 200px;
+			height: 280px;
+			background-size: cover;
+		    background-position: 50% 50%;
 			overflow: hidden;
 			img {
 				width: 100%;
@@ -30,7 +34,7 @@
 				font-weight: 100;
 				padding: 1rem 5%;
 				border-bottom: 1px solid #E4E4E4;
-				font-size: 1.25rem;
+				font-size: 2.1rem;
 				a {
 					text-decoration: none;
 					color: #333233;
@@ -44,7 +48,7 @@
 				color: #969696;
 				.username, .buttons {
 					margin: 0;
-					font-size: .8rem;
+					font-size: 1.5rem;
 				}
 				.username {
 					float: left;
@@ -53,6 +57,60 @@
 					float: right;
 					span {
 						margin-left: .5rem;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 479px) {
+	#posts {
+		max-width:none;
+		.post {
+	        width: 100%;
+		    margin-right: auto;
+		    margin-left: auto;
+			.post_image {
+				height: 100%;
+				background-size: cover;
+			    background-position: 50% 50%;
+			    overflow: hidden;
+				img {
+					width: 100%;
+					border-radius: .3rem .3rem 0 0;
+				}
+			}
+			.post_content {
+				h2 {
+					margin: 0;
+					font-weight: 100;
+					padding: 1rem 5%;
+					border-bottom: 1px solid #E4E4E4;
+					font-size: 2.1rem;
+					a {
+						text-decoration: none;
+						color: #333233;
+						&:hover {
+							color: #50A7C7;
+						}
+					}
+				}
+				.data {
+					padding: .75rem 5%;
+					color: #969696;
+					.username, .buttons {
+						margin: 0;
+						font-size: 1.5rem;
+					}
+					.username {
+						float: left;
+					}
+					.buttons {
+						float: right;
+						span {
+							margin-left: .5rem;
+						}
 					}
 				}
 			}

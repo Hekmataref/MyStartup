@@ -1,0 +1,304 @@
+	= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "متأكد؟" },class: "data"
+
+----------
+	.form-group
+		= f.input :link,:label => "تويتر', input_html: { class: 'form-control' }
+	
+----------	
+		if @post.update(post_params)
+			redirect_to @post
+		else
+			render 'edit'
+		end
+		
+----------
+		if @post.update(post_params)
+            redirect_to @post
+        else
+            render 'edit'
+        end
+----------
+= simple_form_for @post, html: { multipart: true } do |f|
+	- if @post.errors.any?
+		#errors
+			%h2
+				= pluralize(@post.errors.count, "error")
+				prevented this Post from saving
+			%ul
+				- @post.errors.full_messages.each do |msg|
+					%li= msg
+
+
+	.form-group
+		= f.input :image,:label => "صورة", input_html: { class: 'form-control' }
+	
+	.form-group
+		= f.input :title,:label => "إسم المشروع", input_html: { class: 'form-control' }
+	
+	.form-group
+		= f.input :link,:label => "رابط المشروع ", input_html: { class: 'form-control' }
+
+	
+
+	.form-group
+		= f.input :description,:label => "نبذة عن المشروع", input_html: { id: 'description',class: 'form-control' }
+
+
+	= f.button :submit, class: "btn btn-primary"
+---------
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8-col-sm-offset-2">
+			<div class="page-header">
+				<h4>أضف مشروعك..</h4>
+			</div>
+			<form method="POST" accept-charset="UTF-8" class="clearfix">
+				<input name="_token" type="hidden" value="4VaORl3z1xAmYXuhSEOBVmgx96Bwbg94kwAJHXTL">
+			<div class="form-group" id="post-title">
+				<input class="form-control" placeholder="إسم المشروع" required="required" id="autocomplete2" name="title" type="text" autocomplete="off">
+			</div>
+		</div>
+	</div>
+</div>
+
+<textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+---------
+    border: 2px solid #E4E4E4;
+    padding:1.5rem;
+}
+    
+    input[type="file"],input[type="email"],input[type="text"], input[type="password"]{
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 1px solid #9B9B9B;
+        padding: .7rem 1.25rem;
+        border-radius: .3rem;
+        outline: none;
+        background: white;
+    }
+
+    #description{
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 1px solid #9B9B9B;
+        padding: .7rem 1.25rem;
+        border-radius: .3rem;
+        outline: none;
+        background: white;
+    }
+---------
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8-col-sm-offset-2">
+			<div class="page-header">
+				<h4>أضف مشروعك..</h4>
+			</div>
+			<form method="POST" accept-charset="UTF-8" class="clearfix">
+				<input name="_token" type="hidden" value="4VaORl3z1xAmYXuhSEOBVmgx96Bwbg94kwAJHXTL">
+			<div class="form-group" id="post-title">
+				<input class="form-control" placeholder="إسم المشروع" required="required" id="autocomplete2" name="title" type="text" autocomplete="off">
+			</div>
+		</div>
+	</div>
+</div>
+----------
+<div class="Farms">
+  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
+  
+    <div class="form-inputs">
+      <%= f.input :name, :label => "الاسم الكامل",required: true, autofocus: true %>
+      <%= f.input :email,:label => "البريد الإلكتروني", required: true %>
+  
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+      <% end %>
+  
+      <%= f.input :password,:label => "كلمة المرور", autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+      <%= f.input :password_confirmation,:label => "إعادة كلمة المرور", required: false %>
+      <%= f.input :current_password,:label => "كلمة المرور الحالية", hint: "we need your current password to confirm your changes", required: true %>
+    </div>
+  
+    <div class="form-actions">
+      <%= f.button :submit, "Update" %>
+    </div>
+  <% end %>
+  
+  <h3>Cancel my account</h3>
+  
+  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  
+  <%= link_to "Back", :back %>
+</div>
+--------
+<h2>Forgot your password?</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email, required: true, autofocus: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Send me reset password instructions" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+--------
+<h2>Log in</h2>
+<div class="panel-heading">
+        <h1></h1>
+    </div>
+    
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :email, required: false, autofocus: true %>
+    <%= f.input :password, required: false %>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Log in" %>
+  </div>
+<% end %>
+
+
+<%= render "devise/shared/links" %>
+---------
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, required: true, autofocus: true %>
+    <%= f.input :email, required: true %>
+    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+    <%= f.input :password_confirmation, required: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up" %>
+  </div>
+  <%= render "devise/shared/links" %>
+<% end %>
+---------
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :reset_password_token, as: :hidden %>
+  <%= f.full_error :reset_password_token %>
+
+  <div class="form-inputs">
+    <%= f.input :password, label: "New password", required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+    <%= f.input :password_confirmation, label: "Confirm your new password", required: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Change my password" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+---------
+<ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">الخيارات <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <% if user_signed_in? %>
+          <li><%= link_to "أضف مشروعك +", new_post_path%></li>
+          <li class="divider"></li>
+          <li><%= link_to "حسابي", edit_user_registration_path %></li>
+          <li><%= link_to "تسجيل خروج", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+          <li><%= link_to 'دخول',new_user_session_url %></li>
+          <li><%= link_to 'انضم إلينا الآن', new_user_registration_url %></li>
+          <% end %>
+---------
+<ul class="nav navbar-nav">
+      <% if user_signed_in? %>
+      <li><%= link_to "أضف مشروعك +", new_post_path, class: "btn btn-info" %></li>
+      <li><%= link_to "حسابي", edit_user_registration_path, class: "btn btn-default" %></li>
+      <li><%= link_to "تسجيل خروج", destroy_user_session_path, method: :delete,class: "btn btn-default" %></li>
+      <% else %>
+      <li><%= link_to "أضف مشروعك +", new_user_registration_url, class: "btn btn-primary" %></li>
+      <li><%= link_to 'دخول',new_user_session_url, class: "btn btn-primary" %></li>
+      <li><%= link_to 'انضم إلينا الآن', new_user_registration_url, class: "btn btn-primary" %></li>
+      <% end %>
+    </ul>
+---------
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="navbar-header navbar-right">
+      <a href="/"><p class="logo">مشروعي</p></a>
+        </div>
+      
+    <ul class="nav navbar-nav navbar-left">
+      <% if user_signed_in? %>
+      <li><%= link_to "أضف مشروعك +", new_post_path, class: "btn btn-info" %></li>
+      <li><%= link_to "حسابي", edit_user_registration_path, class: "btn btn-default" %></li>
+      <li><%= link_to "تسجيل خروج", destroy_user_session_path, method: :delete,class: "btn btn-default" %></li>
+      <% else %>
+      <li><%= link_to "أضف مشروعك +", new_user_registration_url, class: "btn btn-primary" %></li>
+      <li><%= link_to 'دخول',new_user_session_url, class: "btn btn-primary" %></li>
+      <li><%= link_to 'انضم إلينا الآن', new_user_registration_url, class: "btn btn-primary" %></li>
+      <% end %>
+    </ul>
+
+  </div>
+</nav>
+--------
+<% render 'shared/newproj' %>
+
+<form role="form">
+  <div class="form-group">
+    <label for="title">إسم المشروع</label>
+    <input type="text" id="title" class="form-control" />
+    <small id="titleHelp" class="form-text text-muted">نرجو التأكد من كتابة إسم المشروع بالعربي</small>
+  </div>
+  
+  <div class="form-group">
+    <label for="Image">صورة</label>
+    <input type="file" class="form-control-file" id="image" aria-describedby="fileHelp">
+  </div>
+  
+  <div class="form-group">
+    <label for="url-input">رابط المشروع</label>
+    <input class="form-control" type="url" value="https://" id="url-input">
+  </div>
+  
+  <div class="form-group">
+    <label for="description">نبذة مختصرة عن المشروع</label>
+    <textarea class="form-control" id="description" rows="3"></textarea>
+    <small id="descriptionHelp" class="form-text text-muted">نرجو أن تكون النبذة دقيقة وواضحة</small>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">أضف مشروع</button>
+</form>
+------------
+.form-group
+		%label{:for => "title"} إسم المشروع
+		%input#title.form-control{:type => "text", :required => "true"}/
+		%small#titleHelp.form-text.text-muted نرجو التأكد من كتابة إسم المشروع بالعربي
+
+	.form-group
+		%label{:for => "Image"} صورة
+		%input#image.form-control-file{"aria-describedby" => "fileHelp", :required => "true", :type => "file"}/
+	
+	.form-group
+		%label{:for => "link"} رابط المشروع
+		%input#link.form-control{:type => "url", :value => "https://", :required => "true"}/
+
+	.form-group
+		%label{:for => "description"} نبذة مختصرة عن المشروع
+		%textarea#description.form-control{:rows => "3", :required => "true"}
+		%small#descriptionHelp.form-text.text-muted نرجو أن تكون النبذة دقيقة وواضحة
+	
+	= f.button :submit
+	%button.btn.btn-info{:type => "submit" } أضف مشروع

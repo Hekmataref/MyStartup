@@ -1,0 +1,34 @@
+- if user_signed_in?
+    %p#intro
+        أهلاً
+        = current_user.name
+        %br/
+        %span
+            شارك مشروعك وتابع مشاريع الأخرين 
+- else
+    %p#intro
+        ماهو مشروعك؟
+        %br/
+        %span
+            شارك مشروعك وتابع مشاريع الأخرين 
+            
+= render 'shared/liked'
+
+.jumbotrom
+    .container
+        #posts                     
+            - @most_liked.each do |post|
+                .post
+                    .post_image
+                        = link_to (image_tag post.image.url(:small)), post
+                    .post_content
+                        .title
+                            %h2= link_to post.title, post
+                        .data.clearfix
+                            %p.username
+                                بواسطة
+                                = post.user.name
+                            %p.buttons
+                                %span
+                                    %i.fa.fa-check
+                                    = post.get_likes.size
