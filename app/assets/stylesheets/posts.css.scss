@@ -1,11 +1,12 @@
 #post_show {
 	padding-top: 2rem;
+	width: 115%;
 	.post_image_description {
 		width: 40%;
 		float: right;
 		margin-left: 5%;
 		p {
-			font-size: 3rem;
+			font-size: 2.7rem;
 		}
 	}
 	.post_data {
@@ -32,7 +33,7 @@
 			text-decoration: none;
 			color: #969696;
 			margin: 0;
-			font-size: 1.7rem;
+			font-size: 2.5rem;
     		text-align: center;
     		&:hover {
     			color:#7577E4;
@@ -118,24 +119,35 @@
 
 #comments {
 	padding-bottom: 6rem;
-	width: 50%;
+	width: 100%;
+	display: inline-block;
+    word-break: break-word;
 	.comment_count {
 		border-bottom: 1px solid #E9E9E9;
-		padding-bottom: .5rem;
+		padding-bottom: 2.5rem;
 		margin-bottom: 0;
+		margin-top: 3rem;
+		font-size: 24px;	
 	}
 	.comment {
-		padding: 2rem 0;
-		border-bottom: 1px solid #E9E9E9;
-		padding-left: 5%;
+		padding: 2rem 10rem;
+	    border-bottom: 1px solid #E9E9E9;
+	    padding-left: 10rem;
 		.username {
-			font-size: 1.3rem;
-			color: #333233;
+			font-size: 2rem;
+    		color: #161616;
 			margin: 0 0 .5rem 0;
 		}
 		.content {
 			margin: 0;
 			color: #969696;
+		    max-width: 100%;
+		    overflow: hidden;
+		    word-wrap: break-word;
+		    font-size: 16px;
+		    line-height: 1.8;
+			display: inline-block;
+			white-space: pre-line;
 		}
 		
 		.btn {
@@ -162,6 +174,7 @@
 	}
 	#post_show {
 		padding-top: 2rem;
+		width: 100%;
 		.post_image_description {
 		    width: 100%;
 		    min-height: 300px;
@@ -282,7 +295,6 @@
 		width: 100%;
 		.comment_count {
 			border-bottom: 1px solid #E9E9E9;
-			padding-bottom: .5rem;
 			margin-bottom: 0;
 		}
 		.comment {
@@ -297,6 +309,7 @@
 			.content {
 				margin: 0;
 				color: #969696;
+				font-size: 14px;
 			}
 			
 			.btn {

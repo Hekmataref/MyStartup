@@ -1,5 +1,5 @@
 ar:
-  hello: "مرحبا"
-  title: "الاسم"
-  comment: "تعليق"
-  comments: "تعليقات"
+  models:
+    posts:
+      votes: صح عليهم
+      comments: تعليق

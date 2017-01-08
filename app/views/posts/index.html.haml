@@ -26,9 +26,12 @@
                             %h2= link_to post.title, post
                         .data.clearfix
                             %p.username
-                                بواسطة
-                                = post.user.name
+                                قبل
+                                = time_ago_in_words(post.created_at)
                             %p.buttons
                                 %span
                                     %i.fa.fa-check
                                     = post.get_likes.size
+                                %span
+                                    %i.fa.fa-comment
+                                    = post.comments.count

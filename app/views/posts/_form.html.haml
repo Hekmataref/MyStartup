@@ -8,20 +8,22 @@
 				- @post.errors.full_messages.each do |msg|
 					%li= msg
 
+
 	.form-group
-		= f.input :title,:label => "إسم المشروع", input_html: { class: 'form-control', :type => "text", :required => ""}
+		= f.input :title,:label => "إسم المشروع", input_html: { class: 'form-control', :type => "text", :required => "required", :autofocus => true }
 		%small#titleHelp.form-text.text-muted نرجو التأكد من كتابة إسم المشروع بالعربي
 
 	.form-group
-		= f.input :image,:label => "صورة", input_html: { class: 'form-group',"aria-describedby" => "fileHelp", :required => "", :type => "file" }
+		= f.input :image,:label => "صورة", input_html: { class: 'form-group',"aria-describedby" => "fileHelp", :required => "required", :type => "file",:autofocus => true }
 
 	.form-group
-		= f.input :link,:label => "رابط المشروع ", input_html: { class: 'form-control', :type => "url", :value => "https://", :required => "" }
+		= f.input :link,:label => "رابط المشروع ", input_html: { class: 'form-control', :type => "url", :value => "https://", :required => "required" , :autofocus => true, id:'url-input'}
 		
 
 	.form-group
-		= f.input :description,:label => "نبذة مختصرة عن المشروع", input_html: { class: 'form-control', :rows => "3", :required => "" }
+		= f.input :description,:label => "نبذة مختصرة عن المشروع", input_html: { class: 'form-control', :rows => "3", :required => "required" , :autofocus => true, id: 'description'}
 		%small#descriptionHelp.form-text.text-muted نرجو أن تكون النبذة دقيقة وواضحة
 		
 	
 	%button.btn.btn-info{:type => "submit" } أضف مشروع
+	

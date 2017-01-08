@@ -11,10 +11,12 @@
 			= link_to "رابط المشروع", @post.link, class: "btn btn-warning btn-block"
 			= link_to like_post_path(@post), method: :get, class: "data" do
 				%i.fa.fa-check
-				= pluralize(@post.get_upvotes.size, "صح عليهم")
+				= @post.get_upvotes.size
+				صح عليهم
 			%p.data
-				%i.fa.fa-comments.o
-				= pluralize(@post.comments.count, "Comment")
+				%i.fa.fa-comment
+				= @post.comments.count
+				عدد التعليقات
 			- if @post.user == current_user
 				= link_to "تعديل المشروع", edit_post_path(@post), class: "data"
 				= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "متأكد؟" },class: "data"
@@ -32,20 +34,20 @@
 							= @random_post.user.name
 						%p.buttons
 							%span
-								%i.fa.fa-comments-o
+								%i.fa.fa-check
 									= @random_post.get_likes.size
 							%span
 								%i.fa.fa-check
 									= @random_post.comments.count
 
 #comments
-	%h2.comment_count= pluralize(@post.comments.count, "تعليقات على المشروع")
+	%h2.comment_count
+		مناقشة المشروع
 	- @comments.each do |comment|
 		.comment
 			%p.username= comment.user.name
 			%p.content= comment.content
-			= button_to 'مسح', [comment.post, comment],
-               :method => :delete,
-               data: { confirm: 'هل أنت متأكد؟..' }, class: "btn btn-link"
+			- if @post.user == current_user
+				= button_to 'مسح', [comment.post, comment], :method => :delete, data: { confirm: 'هل أنت متأكد؟..' }, class: "btn btn-link"
 		
 	= render "comments/form"

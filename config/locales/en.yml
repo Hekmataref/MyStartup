@@ -20,9 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-  title: "Name"
-  comment: "comment"
-  comments: "comments"
-
+  models:
+    posts:
+      votes: Likes
+      comments: Comments
 

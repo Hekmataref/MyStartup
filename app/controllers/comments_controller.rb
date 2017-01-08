@@ -7,10 +7,16 @@ class CommentsController < ApplicationController
         @comment.user_id = current_user.id
         @comment.post_id = @post.id
         
-        if @comment.save
-            redirect_to post_path(@post)
-        else
-            render 'new'
+        
+        respond_to do |format|
+          if @comment.save
+            format.html { redirect_to post_path(@post) }
+            format.json { render :show, status: :created, location: @post }
+          else
+            flash[:danger] = 'يجب ملء حقل التعليق'
+            format.html { redirect_to post_path(@post) }
+            format.json { render json: @comment.errors, status: :unprocessable_entity }
+          end
         end
     end
     
